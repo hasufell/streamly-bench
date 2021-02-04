@@ -1,5 +1,11 @@
 packages: ./streamly-bench.cabal
 
+package conduit
+    ghc-options: -O2
+
+package conduit-extra
+    ghc-options: -O2
+
 package streamly
     ghc-options: -O2 -fspec-constr-recursive=16 -fmax-worker-args=16
 
