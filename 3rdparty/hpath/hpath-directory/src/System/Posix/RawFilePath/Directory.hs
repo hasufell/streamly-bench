@@ -93,7 +93,7 @@ module System.Posix.RawFilePath.Directory
   )
 where
 
-
+import           Data.ByteString.Lazy.Internal  ( defaultChunkSize )
 import           Control.Applicative            ( (<$>) )
 import           Control.Exception.Safe         ( IOException
                                                 , MonadCatch
@@ -527,7 +527,7 @@ copyFile from to cm = do
               streamlyCopy (fH, tH)
  where
   streamlyCopy (fH, tH) =
-    S.fold (FH.writeChunks tH) $ IFH.toChunksWithBufferOf (256 * 1024) fH
+    S.fold (FH.writeChunks tH) $ IFH.toChunksWithBufferOf defaultChunkSize fH
 
 -- |Copies a regular file, directory or symbolic link. In case of a
 -- symbolic link it is just recreated, even if it points to a directory.
