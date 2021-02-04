@@ -1,4 +1,5 @@
 packages: ./streamly-bench.cabal
+          ./3rdparty/hpath/hpath-directory
 
 package conduit
     ghc-options: -O2
